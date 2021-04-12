@@ -1,0 +1,200 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * WhatsApp Orders plugin for Craft CMS 3.x
+ *
+ * WhatsApp Orders Settings.twig
+ *
+ * @author    zealousweb
+ * @copyright Copyright (c) 2021 zealousweb
+ * @link      www.zealousweb.com
+ * @package   WhatsappOrders
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+{% set title = "Order on WhatsApp" %}
+{% do view.registerAssetBundle("zealouswebcraftcms\\orderonwhatsapp\\assetbundles\\orderonwhatsapp\\OrderOnWhatsappAsset") %}
+{% set plugin = craft.app.plugins.getPlugin('commerce', false) %}
+{% if plugin is not null and plugin.isInstalled %}
+    {% set producttypes = [] %}
+    {% for item in craft.commerce.productTypes.allProductTypes %}
+        {% set producttypes = producttypes|merge([{ value: item.id, label: item.name }]) %}
+    {% endfor %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    {% set country = [] %}
+    {% for item in countries %}
+        {%  set country = country|merge([{ value: item.calling_code, label: item.country}]) %}
+    {% endfor %}
+    <div id="tab-settings">
+        {{ forms.selectField({
+                first: true,
+                label: "Country Code ",
+                id: 'countrycode',
+                name: 'countrycode',
+                required: true,
+                options: country,
+                value: settings.countrycode,
+                errors: settings.getErrors('countrycode'),
+            }) 
+        }}
+
+        {{ forms.textField({
+                first: true,
+                label: "WhatsApp Number ",
+                instructions: " Enter the WhatsApp number without any (+) sign ",
+                id: 'whatsapp-number',
+                name: 'whatsappnumber',
+                required: true,
+                value: settings.whatsappnumber|trim,
+                errors: settings.getErrors('whatsappnumber'),
+            
+            }) 
+        }}   
+    </div>
+    <div id ="settings-tab-whatsapp-button" class ="hidden">
+        {{ forms.textField({
+                label: "Text on Button.  ",
+                instructions: " Default text will be 'Order on WhatsApp'. ",
+                id: 'button-text',
+                name: 'buttontext',
+                value: settings.buttontext ? settings.buttontext : "Order on WhatsApp",
+                
+            }) 
+        }}
+        {{ forms.colorField({
+                label: " Choose a Background Color of the Button. ",
+                id: 'backgroundcolor',
+                name: 'backgroundcolor',
+                value: settings.backgroundcolor ? settings.backgroundcolor : "#228B22"
+                
+            }) 
+        }} 
+        {{ forms.colorField({
+                label: " Choose the Color of the Button Text. ",
+                id: 'textcolor',
+                name: 'textcolor',
+                value: settings.textcolor,
+                value: settings.textcolor ? settings.textcolor : "#FFFFFF",
+
+            }) 
+        }}<h4>Apply to Product types functionality is provided to the shop and detail page</h4>
+        {{ forms.checkboxField({
+                label: " Apply to all Products Type. ",
+                id: 'allproducts',
+                name: 'allproducts',
+                checked: settings.allproducts,
+                class: "allproducts",
+            }) 
+        }}
+        {{ forms.multiselectField({
+                label: "Apply to Specific Product Type. ",
+                instructions: " You can select multiple product types. ",
+                id: 'producttypes',
+                name: 'producttypes',
+                options:producttypes,
+                class: "producttypes-box",
+                values : settings['producttypes']
+            }) 
+        }}
+        {{ forms.checkboxField({
+                label: " Show on the shop page ",
+                id: 'shoppage',
+                name: 'shoppage',
+                checked: settings.shoppage,
+            }) 
+        }} 
+        {{ forms.checkboxField({
+                label: " Show on the product detail page ",
+                id: 'detailpage',
+                name: 'detailpage',
+                checked: settings.detailpage,
+            }) 
+        }}<hr>
+        {{ forms.checkboxField({
+                label: " Show on the cart page ",
+                id: 'cartpage',
+                name: 'cartpage',
+                checked: settings.cartpage,
+            
+            
+            }) 
+        }}
+        {{ forms.checkboxField({
+            label: " Show on the checkout page. ",
+            id: 'checkoutpage',
+            name: 'checkoutpage',
+            checked: settings.checkoutpage,
+            
+        }) 
+        }}
+    </div>
+    <div id ="settings-tab-share-button" class ="hidden">
+        {{ forms.lightswitchField({
+                label: ' Do you want to have Share Button ',
+                id: 'enableshare',
+                name: 'enableshare',
+                on: settings.enableshare == true })
+            }}
+        {{ forms.textField({
+                label: " Text on the Button. ",
+                instructions: "Default text will be 'Share On WhatsApp'.",
+                id: 'share-button-text',
+                name: 'sharebuttontext',
+                value: settings.sharebuttontext ? settings.sharebuttontext : "Share on Whatsapp",
+                class :"sharedata-box",
+                
+            }) 
+        }}
+        {{ forms.colorField({
+                label: " Choose a Background Color of the Button. ",
+                id: 'sharebackgroundcolor',
+                name: 'sharebackgroundcolor',
+                value: settings.sharebackgroundcolor ? settings.sharebackgroundcolor : "#275d43",
+                id:"sharebackground",
+                
+            }) 
+        }} 
+        {{ forms.colorField({
+                label: " Choose the Color of the Button Text. ",
+                id: 'sharetextcolor',
+                name: 'sharetextcolor',
+                value: settings.sharetextcolor ? settings.sharetextcolor : "#FFF",
+                class: "sharedata-box",
+                id: "sharetext",
+
+            }) 
+        }}
+        {{ forms.checkboxField({
+                label: " Apply to all Products Type. ",
+                id: 'shareallproducts',
+                name: 'shareallproducts',
+                checked: settings.shareallproducts,
+                class: "shareallproducts sharedata-box",
+            }) 
+        }}
+        {{ forms.multiselectField({
+                label: " Apply to Specific Product Type. ",
+                instructions: " You can select multiple product types. ",
+                id: 'shareproducttypes',
+                name: 'shareproducttypes',
+                options:producttypes,
+                class: "shareproducttypes-box sharedata-box",
+                values : settings['shareproducttypes'],
+            }) 
+        }}
+    </div>
+{% else %}
+    Install Craft Commerce Plugin from Plugin Store  
+{% endif %}
+
+
+
+
+
+     
+
+
+
+

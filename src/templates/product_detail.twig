@@ -1,0 +1,36 @@
+{% css %}
+.product_detail_whatsapp_button a {
+    background-color: {{settings['backgroundcolor']}};
+    color: {{settings['textcolor']}};
+    padding: 0.5em 0.5em;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 8px;
+    vertical-align: middle;
+    line-height: 1.2;
+    display: inline-block;
+    
+}
+.product_detail_whatsapp_button
+{
+    padding: 10px;
+} 
+    
+{% endcss %}
+<div class ="product_buttons">
+    {% set data =  (settings["producttypes"])is not empty ? settings["producttypes"] :[] %}
+    {% if queryTypeId in data or settings["producttypes"]  is empty %}                  
+        <div class="product_detail_whatsapp_button">
+            {% if settings["detailpage"] == 1 %}
+                <a href='https://web.whatsapp.com/send?phone="{{number|trim}}"&text={{message|url_encode}}' target="_blank">{{settings['buttontext'] ? settings['buttontext'] :'Order on Whatsapp' }}</a> 
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
+
+
+
+
+
+
+

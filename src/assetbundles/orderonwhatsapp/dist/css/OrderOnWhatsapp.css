@@ -1,0 +1,37 @@
+/**
+ * Order on Whatsapp plugin for Craft CMS
+ *
+ * Order on Whatsapp CSS
+ *
+ * @author    zealousweb
+ * @copyright Copyright (c) 2021 zealousweb
+ * @link      https://www.zealousweb.com
+ * @package   OrderOnWhatsapp
+ * @since     1.0.0
+ */
+ .validation-alert{
+    color:#DC143C;
+    background-color: #FCFFDB;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 3px 3px 3px 3px;
+}
+.settings_heading{
+    font-size:x-large;
+    ;
+}
+.horizontal_line{
+    background-color: #000000;
+    border: 1px;
+    border-radius: 3px 3px 3px 3px;
+    height: 1px;
+}
+.Install-button{
+  background-color: #f44336;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+
+}

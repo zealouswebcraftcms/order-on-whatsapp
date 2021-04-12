@@ -1,0 +1,49 @@
+{
+    "name": "zealouswebcraftcms/order-on-whatsapp",
+    "description": "Order on Whatsapp",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "order on whatsapp"
+    ],
+    "support": {
+        "docs": "https://github.com/zealouswebcraftcms/order-on-whatsapp/blob/master/README.md",
+        "issues": "https://github.com/zealouswebcraftcms/order-on-whatsapp/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "zealousweb",
+            "homepage": "https://www.zealousweb.com"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0"
+    },
+    "require-dev": {
+      "craftcms/cms": "^3.2.0",
+      "codeception/codeception": "^3.0",
+      "vlucas/phpdotenv": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+          "zealouswebcraftcms\\orderonwhatsapp\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Order on Whatsapp",
+        "handle": "order-on-whatsapp",
+        "developer": "zealousweb",
+        "developerUrl": "https://www.zealousweb.com",
+        "documentationUrl": "https://github.com/zealouswebcraftcms/order-on-whatsapp/blob/master/README.md",
+        "changelogUrl": "https://raw.githubusercontent.com/zealouswebcraftcms/order-on-whatsapp/master/CHANGELOG.md",
+        "components": {
+            "orderOnWhatsappService": "zealouswebcraftcms\\orderonwhatsapp\\services\\OrderOnWhatsappService"
+        },
+        "class": "zealouswebcraftcms\\orderonwhatsapp\\OrderOnWhatsapp"
+    }
+}

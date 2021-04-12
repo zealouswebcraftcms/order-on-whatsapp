@@ -1,0 +1,64 @@
+{% set current_user = currentUser %}
+{% set settings = craft.app.getPlugins().getPlugin('order-on-whatsapp').getSettings() %}
+{% set number = settings.countrycode ~ settings.whatsappnumber %}   
+{% set checkOut = (settings.checkoutpage) ? settings.checkoutpage : null %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+    
+    var checkOut = '{{checkOut}}';
+    $( document ).ready(function() {
+        if(checkOut) {
+            $("form").submit(function(e) { 
+                var url = "{{ actionUrl('commerce/cart/update-cart')}}";
+                if(confirm('Are you sure you want to continue buying through WhatsApp?')) {
+                    e.preventDefault(); 
+                    $.ajax({
+                        url:url,
+                        method:"post",
+                        data: $('form').serialize(),
+                        complete: function(response) {
+                            window.csrfTokenName = "{{ craft.app.config.general.csrfTokenName|e('js') }}";
+                            window.csrfTokenValue = "{{ craft.app.request.csrfToken|e('js') }}";
+
+                            var send_data = {
+                                action: 'order-on-whatsapp/default/checkout-page'
+                            };
+                            send_data[csrfTokenName] = csrfTokenValue;  
+                            
+                            jQuery.ajax({
+                                type: 'POST',
+                                url: '',
+                                data: send_data,
+                                dataType: "JSON",
+                                complete: function (data) {
+                                    if(data.status == '200') {
+                                        var number = '{{number}}';
+                                        var msg = encodeURIComponent(data.responseJSON);
+                                        var message_url = "https://web.whatsapp.com/send?phone="+number+"&text="+msg;
+                                        window.open(message_url);
+                                    } else {
+                                        var err = jQuery.parseJSON(data.responseText);
+                                        alert("opps something went wrong...\n\n"+ data.status +' - '+ err.error);
+                                        return false;
+                                    }
+                                    
+                                }
+                            })
+                        }
+                    });
+                } else {
+                    $.ajax({
+                        url:url,
+                        method:"post",
+                        data: $('form').serialize(),
+                        complete: function(jqXHR) {
+                            window.location.href = window.location.href;
+                        }
+                    });
+                    return false;
+                }
+            });
+
+        }
+    }); 
+</script>

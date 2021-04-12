@@ -1,0 +1,36 @@
+{% css %}
+ 
+    .product_list_share_button
+    {
+        padding: 10px;
+    } 
+   
+    .product_list_share_button a 
+    {
+        background-color: {{settings['sharebackgroundcolor']}};
+        color: {{settings['sharetextcolor']}};
+        padding: 0.5em 0.5em;
+        text-decoration: none;
+        text-transform: uppercase;
+        border-radius: 8px;
+        vertical-align: middle;
+        line-height: 1.2;
+        display: inline-block;
+    }
+{% endcss %} 
+
+<div class ="product_buttons">
+    {% set data =  (settings["shareproducttypes"])is not empty ? settings["shareproducttypes"] :[] %}
+    {% if queryTypeId in data  or settings["shareproducttypes"]  is empty %}
+        {% if settings["enableshare"] == 1 %}
+        <div class="product_list_share_button">
+            <a href='https://web.whatsapp.com/send?text={{message|url_encode}}' target="_blank">{{settings['sharebuttontext'] ? settings['sharebuttontext'] :'Share on Whatsapp' }}</a>   
+        </div>
+        {% endif %}
+    {% endif %}
+</div>
+
+
+
+  
+
