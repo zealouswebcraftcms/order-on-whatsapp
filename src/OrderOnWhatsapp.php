@@ -122,11 +122,11 @@ class OrderOnWhatsapp extends Plugin
         /* Hook for Product list page ORDER ON WHATSAPP fuctionality */
         Craft::$app->view->hook('whatsapp-order-product-list', function(array &$context) {
             $query = Product::findOne(trim($context['productId']));
-            if((isset($context['productImage'])) && $context['productImage']!= ""){
+            if((isset($context['productImage'])) && $context['productImage'] != ""){
             $Image_url = $context['productImage'];
             }
             else {
-                $context['productImage'] ="";
+                $context['productImage'] = "";
                 $Image_url = "";
             }
             $title = $query['title'];
@@ -160,11 +160,11 @@ class OrderOnWhatsapp extends Plugin
         /*Hook for Product detail page ORDER ON WHATSAPP and SHARE fuctionality */
         Craft::$app->view->hook('whatsapp-order-product-detail', function(array &$context ) {
             $query = Product::findOne(trim($context['productId']));
-            if((isset($context['productImage'])) && $context['productImage']!= ""){
+            if((isset($context['productImage'])) && $context['productImage'] != ""){
                 $Image_url = $context['productImage'];
                 }
                 else{
-                    $context['productImage'] ="";
+                    $context['productImage'] = "";
                     $Image_url = "";
                 }
             $title = $query['title'];
@@ -188,7 +188,6 @@ class OrderOnWhatsapp extends Plugin
             $settings = $this->getSettings();
             $whatsapp_number = $settings['countrycode'].''.$settings['whatsappnumber'];
             $html = '';
-            
             $oldMode = \Craft::$app->view->getTemplateMode();
             Craft::$app->view->setTemplateMode(View::TEMPLATE_MODE_CP);
             $html =  \Craft::$app->view->renderTemplate('order-on-whatsapp/product_detail', [
@@ -218,7 +217,6 @@ class OrderOnWhatsapp extends Plugin
 
             $total_price = number_format($order['storedTotalPrice'], 2, '.', '') .' ('.$order['defaultCurrency'].')'; 
             $message = "*I would like to buy the following product(s)*";
-           
             $msg = $message."\n\n";
             foreach ($data as $k => $val) {
                 $number = $k + 1;
@@ -257,11 +255,11 @@ class OrderOnWhatsapp extends Plugin
         /* Hook for Product list page SHARE ON WHATSAPP fuctionality */
         Craft::$app->view->hook('whatsapp-share-product-list', function(array &$context) {
             $query = Product::findOne(trim($context['productId']));
-            if((isset($context['productImage'])) && $context['productImage']!= ""){
+            if((isset($context['productImage'])) && $context['productImage'] != ""){
                 $Image_url = $context['productImage'];
                 }
                 else{
-                    $context['productImage'] ="";
+                    $context['productImage'] = "";
                     $Image_url = "";
                 }
             $title = $query['title'];
@@ -295,11 +293,11 @@ class OrderOnWhatsapp extends Plugin
         /* Hook for Product detail page SHARE ON WHATSAPP fuctionality */
         Craft::$app->view->hook('whatsapp-share-product-detail', function(array &$context ) {
             $query = Product::findOne(trim($context['productId']));
-            if((isset($context['productImage'])) && $context['productImage']!= ""){
+            if((isset($context['productImage'])) && $context['productImage'] != ""){
                 $Image_url = $context['productImage'];
                 }
                 else{
-                    $context['productImage'] ="";
+                    $context['productImage'] = "";
                     $Image_url = "";
                 }
             $title = $query['title'];

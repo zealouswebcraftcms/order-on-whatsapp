@@ -19,7 +19,7 @@ You can install this plugin from the Plugin Store or with Composer.
 
 #### From the Plugin Store
 
-Go to the Plugin Store in your project’s Control Panel and search for “Order on Whatsapp”. Then click on the “Install” button in its modal window.
+Go to the Plugin Store in your project’s Control Panel and search for “Order on WhatsApp”. Then click on the “Install” button in its modal window.
 
 #### With Composer
 
@@ -44,13 +44,13 @@ composer require zealwhatsapporders/whats-app-orders
 5. Apply this feature to specific product types/all products.
 
 
-![Screenshot](screenshots/screenshot1.png)
+![Screenshot](screenshots/screenshot-1.png)
 
 
-![Screenshot](screenshots/screenshot2.png)
+![Screenshot](screenshots/screenshot-2.png)
 
 
-![Screenshot](screenshots/screenshot3.png)
+![Screenshot](screenshots/screenshot-3.png)
 
 ## General Settings
 
@@ -105,7 +105,7 @@ To include the “Order on WhatsApp” and “Share on WhatsApp” buttons in yo
 ### Product Listing Page:
 You can add the below code in your products loop on the “Product List” page. 
 You have to pass the product id by replacing the “<Pass Product Id>” string. 
-To have the link of product Image in your whatsapp message you have to pass the url of image.
+To have the link of product Image in your WhatsApp message you have to pass the url of image.
 
 ```twig
 {% set productId = <Pass Product Id> %}
@@ -130,7 +130,7 @@ Below is the sample code for where you can add  above code in your twig file to 
 ### Product Detail Page:
 You can add the below code to the “Product Detail” page.
 You have to pass the product id by replacing the “<Pass Product Id>” string.
-To have the link of product Image in your whatsapp message you have to pass the url of image.
+To have the link of product Image in your WhatsApp message you have to pass the url of image.
 ```twig
 {% set productId = <Pass Product Id> %}
 {% set productImage = <Pass Image Url> %}
