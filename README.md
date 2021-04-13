@@ -166,4 +166,4 @@ You can place this one line code above the ending of form tag on the checkout pa
 
 
 
-__Brought to you by [zealousweb](www.zealousweb.com)__
+__Brought to you by [ZealousWeb](https://www.zealousweb.com)__
