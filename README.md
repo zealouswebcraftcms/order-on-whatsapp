@@ -162,7 +162,7 @@ You can add the below code to the “Checkout” page.
 ```twig
 {% hook 'whatsapp-order-checkout-button' %}
 ```
-You can place this one line code above the end form tag on the checkout page.
+You can place this one line code above the ending of form tag on the checkout page.
 
 
 
