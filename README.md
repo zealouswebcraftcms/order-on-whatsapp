@@ -35,10 +35,11 @@ composer require zealwhatsapporders/whats-app-orders
 # tell Craft to install the plugin
 ./craft install/plugin whats-app-orders
 ```
+
 ## Major features of the Plugin
 
 1. Accept orders on your WhatsApp account.
-2. Have WhatsApp ordering features on various pages like the shop (listing) page, product detail page, cart page, and checkout page. 
+2. Have WhatsApp ordering feature on various pages like the shop (listing) page, product detail page, cart page, and checkout page. 
 3. Add custom text to your WhatsApp button.
 4. Add custom color to your WhatsApp button.
 5. Apply this feature to specific product types/all products.
